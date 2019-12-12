@@ -42,8 +42,57 @@
     }
     
     .float-tool{
-        ul{
-            list-style: none;
-        }
+        // ul{
+        //     list-style: none;
+        // }
+        background: white;
+        // ul {
+        //     margin: 0px !important;
+        //     padding: 0px;
+        //     li{
+        //         list-style: none;
+        //     }
+        // }
     }
 }
+
+
+:host ::ng-deep .ant-tree {
+    overflow: hidden;
+    margin: 0 ;
+    padding: 0;
+  }
+
+  :host ::ng-deep .ant-tree li {
+    padding: 4px 0 0 0;
+    list-style: none;
+  }
+
+  .custom-node {
+    cursor: pointer;
+    line-height: 24px;
+    margin-left: 4px;
+    display: inline-block;
+    margin: 0 -1000px;
+    padding: 0 1000px;
+  }
+
+  .active {
+    background: #1890ff;
+    color: #fff;
+  }
+
+  .file-name,
+  .folder-name {
+    margin-left: 4px;
+  }
+
+  .file-desc,
+  .folder-desc {
+    padding: 0 8px;
+    display: inline-block;
+    background: #87ceff;
+    color: #ffffff;
+    position: relative;
+    left: 12px;
+  }

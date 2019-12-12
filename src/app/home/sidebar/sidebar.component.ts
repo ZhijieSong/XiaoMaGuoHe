@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NzFormatEmitEvent, NzTreeNodeOptions } from 'ng-zorro-antd/core';
+import { NzFormatEmitEvent, NzTreeNodeOptions, NzTreeNode } from 'ng-zorro-antd/core';
+import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,38 +8,55 @@ import { NzFormatEmitEvent, NzTreeNodeOptions } from 'ng-zorro-antd/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  activedNode: NzTreeNode;
   nodes = [
-    { title: 'Expand to load', key: '0' },
-    { title: 'Expand to load', key: '1' },
-    { title: 'Tree Node', key: '2', isLeaf: true }
+    {
+      title: 'parent 0',
+      key: '100',
+      author: 'NG ZORRO',
+      expanded: true,
+      children: [
+        { title: 'leaf 0-0', key: '1000', author: 'NG ZORRO', isLeaf: true },
+        { title: 'leaf 0-1', key: '1001', author: 'NG ZORRO', isLeaf: true }
+      ]
+    },
+    {
+      title: 'parent 1',
+      key: '101',
+      author: 'NG ZORRO',
+      children: [
+        { title: 'leaf 1-0', key: '1010', author: 'NG ZORRO', isLeaf: true },
+        { title: 'leaf 1-1', key: '1011', author: 'NG ZORRO', isLeaf: true }
+      ]
+    }
   ];
-  constructor() { }
 
-  nzEvent(event: Required<NzFormatEmitEvent>): void {
-    console.log(event);
-    // load child async
-    if (event.eventName === 'expand') {
-      const node = event.node;
-      if (node && node.getChildren().length === 0 && node.isExpanded) {
-        this.loadNode().then(data => {
-          node.addChildren(data);
-        });
+  openFolder(data: NzTreeNode | Required<NzFormatEmitEvent>): void {
+    // do something if u want
+    if (data instanceof NzTreeNode) {
+      data.isExpanded = !data.isExpanded;
+    } else {
+      const node = data.node;
+      if (node) {
+        node.isExpanded = !node.isExpanded;
       }
     }
   }
-  
-  loadNode(): Promise<NzTreeNodeOptions[]> {
-    return new Promise(resolve => {
-      setTimeout(
-        () =>
-          resolve([
-            { title: 'Child Node', key: `${new Date().getTime()}-0` },
-            { title: 'Child Node', key: `${new Date().getTime()}-1` }
-          ]),
-        1000
-      );
-    });
+
+  activeNode(data: NzFormatEmitEvent): void {
+    this.activedNode = data.node!;
   }
+
+  contextMenu($event: MouseEvent, menu: NzDropdownMenuComponent): void {
+    this.nzContextMenuService.create($event, menu);
+  }
+
+  selectDropdown(): void {
+    // do something
+  }
+
+  constructor(private nzContextMenuService: NzContextMenuService) { }
+
   ngOnInit() {
   }
 
