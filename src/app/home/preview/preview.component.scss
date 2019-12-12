@@ -1,0 +1,19 @@
+@import "./themes/catfish-master/catfish.scss";
+@import "../../../../node_modules/highlight.js/styles/monokai-sublime.css";
+
+:host{
+    flex: 1;
+    
+}
+
+.preview-container{
+        width: 100%;
+        height: 100%;
+        border-left: 1px solid black;
+        padding: 20px;
+        padding-top: 40px;
+        pre{
+            background: #dde2e2;
+            padding: 15px;
+        }
+}

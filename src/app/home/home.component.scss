@@ -1,0 +1,63 @@
+.main-container {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  // align-items: center;
+  // justify-content: center;
+
+  // background: url(../../assets/background.jpg) no-repeat center fixed;
+  
+  // -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  // background-size: cover; /* version standardisée */
+}
+
+.top-container {
+  flex: 1;
+  display: flex;
+  flex-flow: row;
+}
+
+app-preview{
+  flex: 1;
+}
+
+.center-container {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+}
+
+nz-header{
+  display: none; 
+}
+
+nz-header {
+  height: 70px;
+  padding: 0px;
+}
+
+nz-footer {
+  height: 30px;
+  background: cornflowerblue;
+}
+
+.sider {
+  background: #3d3d3d;
+  color: #fff;
+}
+
+nz-content {
+  flex: 1;
+  // background: rgba(16, 142, 233, 1);
+  // color: #fff;
+  display: flex;
+  flex-flow: row;
+}
+
+.main-container{
+  height:100vh;
+}
+
+nz-layout:last-child {
+  margin: 0;
+}

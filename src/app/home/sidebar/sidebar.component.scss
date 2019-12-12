@@ -1,0 +1,49 @@
+.sidebar-container {
+    height: 100%;
+    width: 350px;
+    display: flex;
+    flex-flow: row;
+    .stick-tool {
+
+        text-align: center;
+        height: 100%;
+        width: 50px;
+        display: flex;
+        flex-flow: column;
+        .top-tool{
+            width: 100%;
+            height: 50px;
+        }
+    
+        .place-holder{
+            width: 100%;
+            flex: 1;
+        }
+    
+    
+        .bottom-tool{
+            width: 100%;
+            height: 50px;
+            
+        }
+    
+        .tool-icon {
+            width: 100%;
+            height: 50px;
+            padding-top: 12px;
+            i{
+                font-size: 23px;
+            }
+        }
+    
+        .tool-icon:hover{
+            opacity:  0.5;
+        }
+    }
+    
+    .float-tool{
+        ul{
+            list-style: none;
+        }
+    }
+}

@@ -1,0 +1,34 @@
+
+
+.editor-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    app-editor-tools{
+        // height: 40px;
+        width: 100%;
+        // background: cyan;
+        line-height: initial;
+        text-align: left;
+    }
+    textarea{
+        flex:1;
+        color: black;
+    }
+
+    .editor{
+        font-size: 26px;
+        line-height: 39px;
+        border-top: 1px solid lightgrey;
+        flex:1;
+        color: black;
+        text-align: left;
+        // word-wrap:break-word;  /*遇到空格整个单词显示不完就自动换行到下一行*/
+        // word-break:break-all;  /*如果一行没有空格就到头截断单词换行*/
+    }
+}
+
+:host{
+    width: 50%;
+}

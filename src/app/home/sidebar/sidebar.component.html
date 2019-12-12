@@ -1,0 +1,24 @@
+<div class="sidebar-container">
+  <div class="stick-tool">
+      <div class="top-tool"  style="float:inline-start;">
+          <div class="tool-icon">
+              <i nz-icon [nzType]="'file'"></i>
+          </div>
+        </div>
+        <div class="place-holder">
+      
+        </div>
+        <div class="bottom-tool" style="float:inline-end;">
+          <div class="tool-icon">
+              <i nz-icon [nzType]="'setting'"></i>
+          </div>
+           
+        </div>
+  </div>
+  <div class="float-tool" >
+    <div style="height: 100%; width: 300px; background: pink;">
+        <nz-tree [nzData]="nodes" nzAsyncData (nzClick)="nzEvent($event)" (nzExpandChange)="nzEvent($event)"> </nz-tree>
+    </div>
+  </div>
+  
+</div>

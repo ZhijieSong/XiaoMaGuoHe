@@ -1,0 +1,10 @@
+<div class="editor-container">
+    <app-editor-tools></app-editor-tools>
+    <div  id="editor" class="editor" [style.font-size] = "this.FontSize" [style.line-height] = "this.LineHeight"  (input)="onInput()"   contenteditable="true">
+
+    </div>
+    <!-- <textarea [style.font-size] = "this.FontSize" [style.line-height] = "this.LineHeight" >
+        This Is Text Area.
+      </textarea> -->
+</div>
+
