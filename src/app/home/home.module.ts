@@ -11,9 +11,10 @@ import { SharedModule } from '../shared/shared.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+import { NgZorroAntdModule, NZ_I18N, zh_CN, NzDropDownModule } from 'ng-zorro-antd';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule} from 'ng-zorro-antd/icon';
+
 /** 配置 angular i18n **/
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
@@ -35,6 +36,7 @@ registerLocaleData(zh);
     NgZorroAntdModule,
     NzLayoutModule,
     NzIconModule,
+    NzDropDownModule,
     FormsModule],
     bootstrap:    [ HomeComponent ],
   providers   : [

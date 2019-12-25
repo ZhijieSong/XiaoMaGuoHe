@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var electron_1 = require("electron");
 var path = require("path");
 var url = require("url");
+var ipcMainService_1 = require("./ipcMainService/ipcMainService");
 var win, serve;
 var args = process.argv.slice(1);
 serve = args.some(function (val) { return val === '--serve'; });
@@ -64,9 +65,9 @@ try {
             createWindow();
         }
     });
+    ipcMainService_1.default.regist(); // 用于与前端通信
 }
 catch (e) {
-    // Catch Error
-    // throw e;
+    console.log("Exception during application start. Exception info is " + e);
 }
 //# sourceMappingURL=main.js.map

@@ -1,6 +1,9 @@
-import { app, BrowserWindow, screen, Menu } from 'electron';
+import { app, BrowserWindow, screen, Menu} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+
+import ipcMainService from './ipcMainService/ipcMainService';
+
 
 let win, serve;
 
@@ -74,7 +77,8 @@ try {
     }
   });
 
+  ipcMainService.regist(); // 用于与前端通信
+
 } catch (e) {
-  // Catch Error
-  // throw e;
+  console.log(`Exception during application start. Exception info is ${e}`);
 }

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NzFormatEmitEvent, NzTreeNodeOptions, NzTreeNode } from 'ng-zorro-antd/core';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd';
+import { FileService } from '../services/file.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  providers: [ FileService ]
 })
 export class SidebarComponent implements OnInit {
   activedNode: NzTreeNode;
@@ -17,7 +19,16 @@ export class SidebarComponent implements OnInit {
       expanded: true,
       children: [
         { title: 'leaf 0-0', key: '1000', author: 'NG ZORRO', isLeaf: true },
-        { title: 'leaf 0-1', key: '1001', author: 'NG ZORRO', isLeaf: true }
+        { title: 'leaf 0-1', key: '1001', author: 'NG ZORRO', isLeaf: true },
+        {
+          title: 'parent 1',
+          key: '102',
+          author: 'NG ZORRO',
+          children: [
+            { title: 'leaf 1-0', key: '1020', author: 'NG ZORRO', isLeaf: true },
+            { title: 'leaf 1-1', key: '1021', author: 'NG ZORRO', isLeaf: true }
+          ]
+        }
       ]
     },
     {
@@ -32,7 +43,6 @@ export class SidebarComponent implements OnInit {
   ];
 
   openFolder(data: NzTreeNode | Required<NzFormatEmitEvent>): void {
-    // do something if u want
     if (data instanceof NzTreeNode) {
       data.isExpanded = !data.isExpanded;
     } else {
@@ -49,15 +59,22 @@ export class SidebarComponent implements OnInit {
 
   contextMenu($event: MouseEvent, menu: NzDropdownMenuComponent): void {
     this.nzContextMenuService.create($event, menu);
+    // TODO 
   }
 
   selectDropdown(): void {
-    // do something
+    console.log('select drop down disaposed')
   }
 
-  constructor(private nzContextMenuService: NzContextMenuService) { }
+  constructor(private nzContextMenuService: NzContextMenuService, 
+    private fileService: FileService) {  }
+
 
   ngOnInit() {
   }
 
+  /// 打开文件夹
+  openFileFolder () : void{
+    this.fileService.openForlder('/');
+  }
 }

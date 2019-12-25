@@ -1,49 +1,47 @@
 <div class="sidebar-container">
-  <div class="stick-tool">
-      <div class="top-tool"  style="float:inline-start;">
-          <div class="tool-icon">
-              <i nz-icon [nzType]="'file'"></i>
-          </div>
+    <div class="stick-tool">
+        <div class="top-tool" style="float:inline-start;">
+            <div class="tool-icon" (click)="openFileFolder()">
+                <i nz-icon [nzType]="'folder'"></i>
+            </div>
+            <div class="tool-icon">
+                <i nz-icon [nzType]="'file'"></i>
+            </div>
         </div>
         <div class="place-holder">
-      
+
         </div>
         <div class="bottom-tool" style="float:inline-end;">
-          <div class="tool-icon">
-              <i nz-icon [nzType]="'setting'"></i>
-          </div>
-           
+            <div class="tool-icon">
+                <i nz-icon [nzType]="'setting'"></i>
+            </div>
+
         </div>
-  </div>
-  <div class="float-tool" >
-    <div style="height: 100%; width: 300px; background: pink;">
-      <nz-tree
-      [nzData]="nodes"
-      (nzClick)="activeNode($event)"
-      (nzDblClick)="openFolder($event)"
-      [nzTreeTemplate]="nzTreeTemplate"
-    ></nz-tree>
-    <ng-template #nzTreeTemplate let-node>
-      <span class="custom-node" [class.active]="activedNode?.key === node.key">
+    </div>
+    <div class="float-tool">
+        <div style="height: 100%; width: 300px; background: rgb(233, 233, 233);">
+            <nz-tree [nzData]="nodes" (nzClick)="activeNode($event)" (nzClick)="openFolder($event)" [nzTreeTemplate]="nzTreeTemplate"></nz-tree>
+            <ng-template #nzTreeTemplate let-node>
+                <span class="custom-node" [class.active]="activedNode?.key === node.key">
         <span *ngIf="!node.isLeaf" (contextmenu)="contextMenu($event, menu)">
           <i nz-icon [nzType]="node.isExpanded ? 'folder-open' : 'folder'" (click)="openFolder(node)"></i>
           <span class="folder-name">{{ node.title }}</span>
-          <span class="folder-desc">created by {{ node?.origin?.author | lowercase }}</span>
-        </span>
-        <span *ngIf="node.isLeaf" (contextmenu)="contextMenu($event, menu)">
+                <!-- <span class="folder-desc">created by {{ node?.origin?.author  }}</span> -->
+                </span>
+                <span *ngIf="node.isLeaf" (contextmenu)="contextMenu($event, menu)">
           <i nz-icon nzType="file"></i>
           <span class="file-name">{{ node.title }}</span>
-          <span class="file-desc">modified by {{ node?.origin?.author | lowercase }}</span>
-        </span>
-      </span>
-    </ng-template>
-    <nz-dropdown-menu #menu="nzDropdownMenu">
-      <ul nz-menu>
-        <li nz-menu-item (click)="selectDropdown()">Action 1</li>
-        <li nz-menu-item (click)="selectDropdown()">Action 2</li>
-      </ul>
-    </nz-dropdown-menu>
+                <!-- <span class="file-desc">modified by {{ node?.origin?.author  }}</span> -->
+                </span>
+                </span>
+            </ng-template>
+            <nz-dropdown-menu class="file-dropdown-menu" #menu="nzDropdownMenu">
+                <ul nz-menu>
+                    <li nz-menu-item (click)="selectDropdown()">Action 1</li>
+                    <li nz-menu-item (click)="selectDropdown()">Action 2</li>
+                </ul>
+            </nz-dropdown-menu>
+        </div>
     </div>
-  </div>
-  
+
 </div>
