@@ -1,6 +1,6 @@
 name: Node CI
 
-on: [push, commit_comment, create]
+on: [push, create]
 
 jobs:
   build:
