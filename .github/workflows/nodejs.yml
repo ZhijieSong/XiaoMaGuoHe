@@ -5,27 +5,35 @@ on: [push, create]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
         node-version: [10.9.x, 12.x]
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     steps:
     - name: Check out Git repository
       uses: actions/checkout@v1
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    
     - name: npm install, build, and test
       run: |
         npm install
+    
     - name: Build
       run: |
         npm build
+    
     - name: Test
       run: |
         npm test
+        
+#     - name: Release
+      
       env:
         CI: true
