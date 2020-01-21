@@ -4,13 +4,11 @@ import * as url from 'url';
 
 import ipcMainService from './ipcMainService/ipcMainService';
 
-
-let win, serve;
-
-const args = process.argv.slice(1);
+let win: BrowserWindow = null;
+const args = process.argv.slice(1),
 serve = args.some(val => val === '--serve');
 
-function createWindow() {
+function createWindow() : BrowserWindow {
   Menu.setApplicationMenu(null); // Hide Electron Default Menu.
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
@@ -23,6 +21,7 @@ function createWindow() {
     height: size.height,
     webPreferences: {
       nodeIntegration: true,
+      allowRunningInsecureContent: (serve) ? true : false,
     },
   });
 
@@ -50,7 +49,7 @@ function createWindow() {
     // when you should delete the corresponding element.
     win = null;
   });
-
+  return win;
 }
 
 try {

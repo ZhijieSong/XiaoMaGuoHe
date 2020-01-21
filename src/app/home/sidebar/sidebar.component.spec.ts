@@ -4,6 +4,10 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { SidebarComponent } from './sidebar.component';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { FileService } from '../services/file.service';
+import { IpcRenderService } from '../../services/ipcRender.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
@@ -11,7 +15,9 @@ describe('SidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidebarComponent ]
+      declarations: [ SidebarComponent ],
+      imports: [NgZorroAntdModule,BrowserAnimationsModule],
+      providers:[FileService, IpcRenderService]
     })
     .compileComponents();
   }));

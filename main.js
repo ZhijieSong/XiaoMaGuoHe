@@ -4,9 +4,8 @@ var electron_1 = require("electron");
 var path = require("path");
 var url = require("url");
 var ipcMainService_1 = require("./ipcMainService/ipcMainService");
-var win, serve;
-var args = process.argv.slice(1);
-serve = args.some(function (val) { return val === '--serve'; });
+var win = null;
+var args = process.argv.slice(1), serve = args.some(function (val) { return val === '--serve'; });
 function createWindow() {
     electron_1.Menu.setApplicationMenu(null); // Hide Electron Default Menu.
     var electronScreen = electron_1.screen;
@@ -19,6 +18,7 @@ function createWindow() {
         height: size.height,
         webPreferences: {
             nodeIntegration: true,
+            allowRunningInsecureContent: (serve) ? true : false,
         },
     });
     if (serve) {
@@ -44,6 +44,7 @@ function createWindow() {
         // when you should delete the corresponding element.
         win = null;
     });
+    return win;
 }
 try {
     // This method will be called when Electron has finished

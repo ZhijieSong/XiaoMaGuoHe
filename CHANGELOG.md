@@ -1,3 +1,7 @@
+## 自动化测试
+需要Karma将测试环境由chrome改为electron  
+
+
 ## <small>6.3.1 (2019-11-01)</small>
 
 * [Bumped Version]  6.3.1 ([671b6a3](https://github.com/maximegris/angular-electron/commit/671b6a3))
