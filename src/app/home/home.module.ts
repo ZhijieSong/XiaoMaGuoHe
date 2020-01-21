@@ -30,7 +30,10 @@ registerLocaleData(zh);
     EditorToolsComponent,
     SidebarComponent,
     HtmlPipe],
-  imports: [CommonModule, 
+    // exports: [
+    //   EditorToolsComponent
+    // ],
+    imports: [CommonModule, 
     SharedModule, 
     HomeRoutingModule,
     NgZorroAntdModule,
@@ -39,7 +42,7 @@ registerLocaleData(zh);
     NzDropDownModule,
     FormsModule],
     bootstrap:    [ HomeComponent ],
-  providers   : [
+    providers   : [
       { provide: NZ_I18N, useValue: zh_CN }
     ]
 }
